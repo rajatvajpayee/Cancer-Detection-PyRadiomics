@@ -1,0 +1,18 @@
+# Phase 1 – Dynamic HSIC (nested CV k-search)
+# Finds the optimal top_k at each outer fold via inner 3-fold CV.
+# Smaller grid than MI (HSIC is O(n²) per feature).
+# Search grid: [5, 8, 10, 12, 15, 20]
+extends: base_config.yaml
+
+experiment:
+  phase: 1
+  name: dynamic_hsic
+  selector: dynamic_hsic
+  output_dir: outputs/phase1/dynamic_hsic
+
+feature_selection:
+  active: [dynamic_hsic]
+  dynamic_hsic:
+    k_grid: [5, 8, 10, 12, 15, 20]
+    n_inner: 3
+    random_state: 42

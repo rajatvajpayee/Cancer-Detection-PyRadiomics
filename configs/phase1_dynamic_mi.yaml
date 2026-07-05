@@ -1,0 +1,17 @@
+# Phase 1 – Dynamic MI (nested CV k-search)
+# Finds the optimal top_k at each outer fold via inner 3-fold CV.
+# Search grid: [5, 8, 10, 12, 15, 20, 25, 30, 40, 50]
+extends: base_config.yaml
+
+experiment:
+  phase: 1
+  name: dynamic_mi
+  selector: dynamic_mi
+  output_dir: outputs/phase1/dynamic_mi
+
+feature_selection:
+  active: [dynamic_mi]
+  dynamic_mi:
+    k_grid: [5, 8, 10, 12, 15, 20, 25, 30, 40, 50]
+    n_inner: 3
+    random_state: 42

@@ -1,0 +1,17 @@
+# Phase 2 – Sequential: Covariance → HSIC
+# Step 1: drop highly correlated features (covariance filter)
+# Step 2: from survivors, keep top-k by HSIC score
+extends: base_config.yaml
+
+experiment:
+  phase: 2
+  name: covar_then_hsic
+  selector: covariance+hsic
+  output_dir: outputs/phase2/covar_hsic
+
+feature_selection:
+  active: [covariance, hsic]  # applied sequentially in this order
+  covariance:
+    threshold: 0.95
+  hsic:
+    top_k: 25

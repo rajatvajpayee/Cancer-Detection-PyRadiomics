@@ -1,0 +1,14 @@
+# Phase 1 – Covariance filter only
+# Feature selection: covariance filter → all remaining features to model
+extends: base_config.yaml
+
+experiment:
+  phase: 1
+  name: covariance_only
+  selector: covariance
+  output_dir: outputs/phase1/covariance
+
+feature_selection:
+  active: [covariance]
+  covariance:
+    threshold: 0.85

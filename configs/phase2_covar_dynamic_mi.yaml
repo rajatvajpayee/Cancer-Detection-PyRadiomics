@@ -1,0 +1,19 @@
+# Phase 2 – Sequential: Covariance → Dynamic MI
+# Step 1: drop highly correlated features
+# Step 2: dynamic top_k search on survivors via inner CV
+extends: base_config.yaml
+
+experiment:
+  phase: 2
+  name: covar_dynamic_mi
+  selector: covariance+dynamic_mi
+  output_dir: outputs/phase2/covar_dynamic_mi
+
+feature_selection:
+  active: [covariance, dynamic_mi]
+  covariance:
+    threshold: 0.85
+  dynamic_mi:
+    k_grid: [5, 8, 10, 12, 15, 20, 25, 30]
+    n_inner: 3
+    random_state: 42

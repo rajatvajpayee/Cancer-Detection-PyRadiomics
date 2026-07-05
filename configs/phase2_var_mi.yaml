@@ -1,0 +1,17 @@
+# Phase 2 – Sequential: Variance filter → MI
+# Step 1: remove near-zero variance features
+# Step 2: from survivors, keep top-k by MI score
+extends: base_config.yaml
+
+experiment:
+  phase: 2
+  name: var_then_mi
+  selector: variance+mi
+  output_dir: outputs/phase2/var_mi
+
+feature_selection:
+  active: [variance, mi]
+  variance:
+    threshold: 0.01
+  mi:
+    top_k: 20

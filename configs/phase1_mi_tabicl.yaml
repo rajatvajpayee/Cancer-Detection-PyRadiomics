@@ -1,0 +1,15 @@
+# Phase 1 – MI with TabICL-tuned top_k
+# TabICL works better with fewer, cleaner features.
+# Testing top_k=15 (tighter than the default 20).
+extends: base_config.yaml
+
+experiment:
+  phase: 1
+  name: mi_tabicl_tuned
+  selector: mi
+  output_dir: outputs/phase1/mi_tabicl
+
+feature_selection:
+  active: [mi]
+  mi:
+    top_k: 5

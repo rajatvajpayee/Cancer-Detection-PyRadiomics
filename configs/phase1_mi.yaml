@@ -1,0 +1,14 @@
+# Phase 1 – Mutual Information only
+# Feature selection: MI top-k (no covariance pre-filter)
+extends: base_config.yaml
+
+experiment:
+  phase: 1
+  name: mi_only
+  selector: mi
+  output_dir: outputs/phase1/mi
+
+feature_selection:
+  active: [mi]
+  mi:
+    top_k: 20

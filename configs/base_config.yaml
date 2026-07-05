@@ -1,0 +1,57 @@
+# ─────────────────────────────────────────────
+# base_config.yaml  –  shared defaults
+# All phase configs inherit / override these
+# ─────────────────────────────────────────────
+
+data:
+  path: data/data.csv
+  target_col: label          # binary: 1=responder, 0=non-responder
+  random_state: 42
+
+preprocessing:
+  scaler: standard           # standard | robust
+  imputer: median            # median | mean | none
+
+cross_validation:
+  strategy: stratified_kfold
+  n_splits: 5
+  random_state: 42
+
+feature_selection:
+  covariance:
+    threshold: 0.85          # drop one of any pair with |corr| > threshold
+  variance:
+    threshold: 0.01          # drop near-zero variance features
+  mi:
+    top_k: 20                # keep top-k features by MI score
+  hsic:
+    top_k: 12                # keep top-k by HSIC (reduced; unstable at N=63)
+
+models:
+  xgboost:
+    n_estimators: 300
+    max_depth: 4
+    learning_rate: 0.05
+    scale_pos_weight: 2      # reduced from 4; was causing high recall / low precision
+    min_child_weight: 3      # prevents tiny minority-class leaf splits at N=63
+    subsample: 0.8           # light regularisation for small dataset
+    colsample_bytree: 0.8
+    tree_method: hist
+    n_jobs: 1
+    random_state: 42
+  tabicl:
+    device: cuda             # falls back to cpu if unavailable
+    random_state: 42
+
+evaluation:
+  threshold_sweep: true      # OOF global sweep, not per-fold
+  metrics:
+    - auc
+    - f1
+    - precision
+    - recall
+    - confusion_matrix
+
+output:
+  save_plots: true
+  save_csv: true

@@ -1,0 +1,15 @@
+# Phase 1 – No feature selection (full feature baseline)
+# Passes all ~1086 radiomic features directly to the model.
+# Useful to show that feature selection helps.
+# NOTE: Only meaningful for TabICL — XGBoost with 1086 features
+# and N=63 will massively overfit.
+extends: base_config.yaml
+
+experiment:
+  phase: 1
+  name: full_features
+  selector: none
+  output_dir: outputs/phase1/full
+
+feature_selection:
+  active: [none]

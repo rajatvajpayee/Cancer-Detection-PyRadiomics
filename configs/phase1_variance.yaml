@@ -1,0 +1,15 @@
+# Phase 1 – Variance filter only
+# Removes near-zero variance features (~removes ~50-100 constant cols).
+# Useful as a lightweight baseline before MI/HSIC.
+extends: base_config.yaml
+
+experiment:
+  phase: 1
+  name: variance_only
+  selector: variance
+  output_dir: outputs/phase1/variance
+
+feature_selection:
+  active: [variance]
+  variance:
+    threshold: 0.01

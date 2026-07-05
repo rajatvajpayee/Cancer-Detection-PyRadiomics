@@ -1,0 +1,14 @@
+# Phase 1 – HSIC only
+# Feature selection: HSIC top-k (no covariance pre-filter)
+extends: base_config.yaml
+
+experiment:
+  phase: 1
+  name: hsic_only
+  selector: hsic
+  output_dir: outputs/phase1/hsic
+
+feature_selection:
+  active: [hsic]
+  hsic:
+    top_k: 10

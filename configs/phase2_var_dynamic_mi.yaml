@@ -1,0 +1,19 @@
+# Phase 2 – Sequential: Variance → Dynamic MI
+# Step 1: remove near-zero variance features
+# Step 2: dynamic top_k search on survivors via inner CV
+extends: base_config.yaml
+
+experiment:
+  phase: 2
+  name: var_dynamic_mi
+  selector: variance+dynamic_mi
+  output_dir: outputs/phase2/var_dynamic_mi
+
+feature_selection:
+  active: [variance, dynamic_mi]
+  variance:
+    threshold: 0.01
+  dynamic_mi:
+    k_grid: [5, 8, 10, 12, 15, 20, 25, 30]
+    n_inner: 3
+    random_state: 42

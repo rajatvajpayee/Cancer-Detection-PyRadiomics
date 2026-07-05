@@ -1,0 +1,17 @@
+# Phase 2 – Sequential: Covariance → MI
+# Step 1: drop highly correlated features (covariance filter)
+# Step 2: from survivors, keep top-k by MI score
+extends: base_config.yaml
+
+experiment:
+  phase: 2
+  name: covar_then_mi
+  selector: covariance+mi
+  output_dir: outputs/phase2/covar_mi
+
+feature_selection:
+  active: [covariance, mi]   # applied sequentially in this order
+  covariance:
+    threshold: 0.90
+  mi:
+    top_k: 25
