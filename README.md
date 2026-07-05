@@ -73,8 +73,6 @@ Cancer-Detection-PyRadiomics/
 - *TabICLv2: A Better, Faster, Scalable, and Open Tabular Foundation Model*  
   https://arxiv.org/abs/2602.11139
 
----
-
 ### 3. TabFM (Google Research, v1.0.0)
 - Google's **latest tabular foundation model** for classification and regression, released in **2026** with publicly available pretrained checkpoints.
 - Uses **zero-shot in-context learning**, eliminating the need for dataset-specific training, feature engineering, or hyperparameter tuning.
@@ -93,7 +91,6 @@ Cancer-Detection-PyRadiomics/
 
 ---
 ## Usage
-
 ### Environment Setup
 
 ```bash
@@ -108,7 +105,6 @@ pip install -r requirements.txt
 ```
 
 ### Run Experiments
-
 Experiments are configured using YAML configuration files in the `configs/` directory. You can run a specific experiment by selecting a configuration file and model, or execute all predefined experiments in a single command.
 
 ```bash
