@@ -1,41 +1,36 @@
-# Compiled Lua sources
-luac.out
+# =========================
+# Data & Outputs
+# =========================
+data/
+outputs/
+logs/
+tabfm/
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+# =========================
+# Environment 
+# Set API keys in .env file
+# =========================
+.env
+.venv/
+venv/
+env/
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
 
-# Precompiled Headers
-*.gch
-*.pch
+# =========================
+# IDEs
+# =========================
+.vscode/
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
+# =========================
+# Model Checkpoints
+# =========================
+*.ckpt
+*.pth
+*.pt
